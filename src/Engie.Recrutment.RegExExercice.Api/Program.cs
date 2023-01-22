@@ -5,6 +5,7 @@ using Engie.Recrutment.RegExExercice.Api.Application.Queries.Substitution;
 using Engie.Recrutment.RegExExercice.Api.Contracts.Match;
 using Engie.Recrutment.RegExExercice.Api.Contracts.Substitution;
 using Engie.Recrutment.RegExExercice.Api.Infrastructure;
+using Hellang.Middleware.ProblemDetails;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    //app.UseProblemDetails();
+    app.UseProblemDetails();
     app.MapPost("/api/v1/regular-expressions/match", async (MatchRequest request, ISender mediator)
                                                         => await mediator.Send(new MatchQuery(request.Pattern, request.Text)));
 
