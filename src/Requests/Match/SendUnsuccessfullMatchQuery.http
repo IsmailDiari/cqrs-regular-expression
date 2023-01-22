@@ -1,0 +1,9 @@
+@host=http://localhost:5081
+
+POST {{host}}/api/v1/regular-expressions/match
+Content-Type:application/json
+
+{
+    "pattern":"\\d\\d\\d\\d\\d",
+    "text":"be it 1111 1111 1111 1111 or 8493 2349 5173 8495."
+}
