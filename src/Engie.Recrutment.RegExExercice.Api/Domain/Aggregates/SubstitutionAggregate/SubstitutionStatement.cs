@@ -13,18 +13,16 @@ public sealed class SubstitutionStatement : AggregateRoot
     public string SubstitutedText { get; private set; }
     public bool? IsSuccess => SubstitutedText is not null and { Length: > 0 };
 
-    private SubstitutionStatement(string pattern, string text, string replace)
+    private SubstitutionStatement(string pattern,
+                                  string text,
+                                  string replace)
         : base(Guid.NewGuid())
     {
         _pattern = pattern;
         _text = text;
         _replace = replace;
     }
-    //for automapper
-    private SubstitutionStatement() : base(default)
-    {
 
-    }
     public static SubstitutionStatement Create(string pattern, string text, string replace)
     {
         _ = pattern ?? throw new BusinessRuleValidationException("PatternShouldNotBeEmptyRule", $"{nameof(pattern)} could not be empty");
