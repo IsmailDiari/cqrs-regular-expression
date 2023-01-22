@@ -12,11 +12,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
+        //#FixMe: AddControllers is useless here, it is added to bypass problem with AddProblemDetails
+        services.AddControllers();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
-        services.AddProblemDetails(x =>
+        services.AddProblemDetails(configure =>
             {
-                x.Map<InvalidCommandException>(ex => new InvalidCommandProblemDetails(ex));
-                x.Map<BusinessRuleValidationException>(ex => new BusinessRuleValidationExceptionProblemDetails(ex));
+                configure.IncludeExceptionDetails = (ctx, exception) => false;
+                configure.Map<InvalidCommandException>(ex => new InvalidCommandProblemDetails(ex));
+                configure.Map<BusinessRuleValidationException>(ex => new BusinessRuleValidationExceptionProblemDetails(ex));
             });
         return services;
     }
