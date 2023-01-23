@@ -25,8 +25,8 @@ public sealed class MatchStatement : AggregateRoot
 
     public static MatchStatement Create(string pattern, string text)
     {
-        _ = pattern ?? throw new BusinessRuleValidationException("PatternShouldNotBeEmptyRule", $"{nameof(pattern)} could not be empty");
-        _ = text ?? throw new BusinessRuleValidationException("TextShouldNotBeEmptyRule", $"{nameof(text)} could not be empty");
+        _ = !string.IsNullOrWhiteSpace(pattern) ? pattern : throw new BusinessRuleValidationException("PatternShouldNotBeEmptyRule", $"{nameof(pattern)} could not be null");
+        _ = !string.IsNullOrWhiteSpace(text) ? text : throw new BusinessRuleValidationException("TextShouldNotBeEmptyRule", $"{nameof(text)} could not be null");
 
         return new MatchStatement(pattern, text);
     }
