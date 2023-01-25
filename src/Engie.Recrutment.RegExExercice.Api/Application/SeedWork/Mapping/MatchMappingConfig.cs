@@ -1,5 +1,5 @@
 using AutoMapper;
-using Engie.Recrutment.RegExExercice.Api.Application.Queries.Match;
+using Engie.Recrutment.RegExExercice.Api.Application.Commands.Match;
 using Engie.Recrutment.RegExExercice.Api.Domain.Aggregates.MatchAggregate;
 using Engie.Recrutment.RegExExercice.Api.Domain.Aggregates.MatchAggregate.ValueObjects;
 
@@ -9,7 +9,7 @@ public sealed class MatchMappingConfig : Profile
 {
     public MatchMappingConfig()
     {
-        CreateMap<MatchStatement, MatchQueryResponse>();
+        CreateMap<MatchStatement, MatchCommandResponse>();
         CreateMap<MatchInformation, MatchInformationResponse>();
         CreateMap<Match, MatchResponse>();
     }

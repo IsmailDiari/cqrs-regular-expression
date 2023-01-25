@@ -1,6 +1,6 @@
 @host=http://localhost:5081
 
-POST {{host}}/api/v1/regular-expressions/substitution
+POST {{host}}/api/v1/regular-expressions/substitutions
 Content-Type:application/json
 
 {

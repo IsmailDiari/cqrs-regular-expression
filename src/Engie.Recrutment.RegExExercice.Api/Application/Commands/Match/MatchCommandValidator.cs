@@ -1,10 +1,10 @@
 using FluentValidation;
 
-namespace Engie.Recrutment.RegExExercice.Api.Application.Queries.MatchQuery;
+namespace Engie.Recrutment.RegExExercice.Api.Application.Commands.Match;
 
-public sealed class MatchQueryValidator : AbstractValidator<MatchQuery>
+public sealed class MatchCommandValidator : AbstractValidator<MatchCommand>
 {
-    public MatchQueryValidator()
+    public MatchCommandValidator()
     {
         RuleFor(m => m.Pattern)
             .NotEmpty().WithMessage("{PropertyName} should not be empty");
